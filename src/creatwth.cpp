@@ -28,6 +28,17 @@ typedef DWORD DWORD_PTR;
 #define CLR_DIRECTORY OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR]
 #define IAT_DIRECTORY OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT]
 
+#if _MSC_VER<1300
+#define ARRAYSIZE(a)	(sizeof(a)/sizeof(a[0]))
+#define strcpy_s(d,l,s)	strncpy(d, s, l)
+#define strcat_s(d,l,s)	strncat(d,s,l)
+#define wcscat_s(d,l,s)	wcsncat(d,s,l)
+#include <stdio.h>
+#define sprintf_s	_snprintf
+#define swprintf_s _snwprintf
+#endif
+
+
 //////////////////////////////////////////////////////////////////////////////
 //
 #ifndef _STRSAFE_H_INCLUDED_

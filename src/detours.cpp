@@ -29,6 +29,10 @@
 #error Must define one of DETOURS_32BIT or DETOURS_64BIT
 #endif
 
+#if _MSC_VER<1300
+#define ARRAYSIZE(a)	(sizeof(a)/sizeof(a[0]))
+#define __debugbreak DebugBreak
+#endif
 //////////////////////////////////////////////////////////////////////////////
 //
 struct _DETOUR_ALIGN

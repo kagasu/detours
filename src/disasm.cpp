@@ -353,7 +353,7 @@ PBYTE CDetourDis::CopyBytesJump(REFCOPYENTRY pEntry, PBYTE pbDst, PBYTE pbSrc)
     ASSERT(pbSrc[0] >= 0x70 && pbSrc[0] <= 0x7f);
 
     pbDst[0] = 0x0f;
-    pbDst[1] = 0x80 | (pbSrc[0] & 0xf);
+    pbDst[1] = (BYTE)(0x80 | (pbSrc[0] & 0xf));
     pvDstAddr = &pbDst[2];
     nNewOffset = nOldOffset - ((pbDst - pbSrc) + 4);
     *(LONG*&)pvDstAddr = (LONG)nNewOffset;
